@@ -1,4 +1,4 @@
-# BetLab
+# Sequential betting
 
 Compare a fixed pair of models on an ordered stream of bounded scores. Inspect
 how a statistical bet accumulates evidence, why giving a ruined test free
@@ -9,6 +9,9 @@ restarts breaks its guarantee, and what a prespecified start budget changes.
 BetLab implements standard nonnegative betting processes in Python 3.10+, using only the standard library. It reports every rational wealth update, mixture component, past-only bet, first threshold crossing and running-maximum p-value bound. A separate finite-law auditor enumerates all branches and checks conditional expectations, stopped wealth and the exact probability of ever crossing.
 
 This is an offline statistics project for AI evaluation. It does not train a model or claim a new inference theorem. The paired-score examples and null trees are developed fixtures, not untouched benchmarks or deployed monitoring evidence.
+
+The repository is now `sequential-betting`. The Python import and CLI names stay
+`betlab` for compatibility with existing scripts.
 
 ## Choose the calculation
 
