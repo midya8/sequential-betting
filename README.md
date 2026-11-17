@@ -6,7 +6,7 @@ restarts breaks its guarantee, and what a prespecified start budget changes.
 
 ![Exact evidence and restart audit](assets/evidence-audit.svg)
 
-BetLab implements standard nonnegative betting processes in Python 3.10+, using only the standard library. It reports every rational wealth update, mixture component, past-only bet, first threshold crossing and running-maximum p-value bound. A separate finite-law auditor enumerates all branches and checks conditional expectations, stopped wealth and the exact probability of ever crossing.
+This implementation implements standard nonnegative betting processes in Python 3.10+, using only the standard library. It reports every rational wealth update, mixture component, past-only bet, first threshold crossing and running-maximum p-value bound. A separate finite-law auditor enumerates all branches and checks conditional expectations, stopped wealth and the exact probability of ever crossing.
 
 This is an offline statistics project for AI evaluation. It does not train a model or claim a new inference theorem. The paired-score examples and null trees are developed fixtures, not untouched benchmarks or deployed monitoring evidence.
 
@@ -50,7 +50,7 @@ Let `D_t = candidate_score_t - baseline_score_t`, with both scores in `[0,1]`. T
 
 For any past-measurable `b_t` in `[0,1]`, start at one and multiply by `1+b_t*D_t`. Factors are nonnegative. Under the conditional null, their conditional expectations are at most one, so wealth is a nonnegative supermartingale. A fixed convex mixture of such wealth processes is another. Ville's inequality bounds the probability of **ever** reaching `1/alpha` by alpha. An arbitrary stopping time is allowed within this fixed test. Selecting the winning test after running several is not covered.
 
-BetLab exposes two valid constructions separately:
+This implementation exposes two valid constructions separately:
 
 - `mixture`: fixed bets `[0,1/4,1/2,3/4,1]`, equal positive weights by default. Caller-supplied distinct bets and exact positive normalized weights are supported. Components retain their own capital, including permanent ruin at zero. Their maximum is not substituted for their average.
 - `predictable`: the past-only heuristic `clip(sum_previous_D / (1 + sum_previous_D_squared), 0, 1)`. The current observation is excluded. It has the same validity argument, not a power-optimality claim. It is a separate test, not an extra component chosen after seeing results.
